@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Пассажирские перевозки — Корпоративные маршруты</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <h1>Платформа корпоративных перевозок</h1>
+    <p>Заказчики размещают заявки, перевозчики на минивенах получают заказы в ленте.</p>
+  </header>
+
+  <main class="container">
+    <section id="auth-section" class="card">
+      <h2>Вход и регистрация</h2>
+      <div class="grid two">
+        <div>
+          <h3>Регистрация заказчика (организация)</h3>
+          <form id="customer-register-form" class="form">
+            <label>Название организации
+              <input name="companyName" required />
+            </label>
+            <label>Email
+              <input name="email" type="email" required />
+            </label>
+            <label>Пароль
+              <input name="password" type="password" minlength="6" required />
+            </label>
+            <button type="submit">Зарегистрировать заказчика</button>
+          </form>
+        </div>
+
+        <div>
+          <h3>Регистрация перевозчика (минивен)</h3>
+          <form id="carrier-register-form" class="form">
+            <label>ФИО водителя
+              <input name="driverName" required />
+            </label>
+            <label>Гос. номер минивена
+              <input name="vehicleNumber" required />
+            </label>
+            <label>Email
+              <input name="email" type="email" required />
+            </label>
+            <label>Пароль
+              <input name="password" type="password" minlength="6" required />
+            </label>
+            <button type="submit">Зарегистрировать перевозчика</button>
+          </form>
+        </div>
+      </div>
+
+      <hr />
+
+      <div class="grid two">
+        <div>
+          <h3>Вход заказчика</h3>
+          <form id="customer-login-form" class="form compact">
+            <label>Email
+              <input name="email" type="email" required />
+            </label>
+            <label>Пароль
+              <input name="password" type="password" required />
+            </label>
+            <button type="submit">Войти как заказчик</button>
+          </form>
+        </div>
+
+        <div>
+          <h3>Вход перевозчика</h3>
+          <form id="carrier-login-form" class="form compact">
+            <label>Email
+              <input name="email" type="email" required />
+            </label>
+            <label>Пароль
+              <input name="password" type="password" required />
+            </label>
+            <button type="submit">Войти как перевозчик</button>
+          </form>
+        </div>
+      </div>
+
+      <p id="auth-message" class="message"></p>
+    </section>
+
+    <section id="customer-dashboard" class="card hidden">
+      <div class="dashboard-head">
+        <h2>Личный кабинет заказчика</h2>
+        <button id="customer-logout" class="secondary">Выйти</button>
+      </div>
+      <p id="customer-welcome"></p>
+
+      <h3>Создать заявку на перевозку</h3>
+      <form id="order-form" class="form">
+        <label>Количество пассажиров
+          <input name="passengers" type="number" min="1" required />
+        </label>
+        <label>Список адресов (по одному на строку)
+          <textarea name="addresses" rows="5" placeholder="ул. Ленина 1\nпр. Мира 22" required></textarea>
+        </label>
+        <label>Комментарий
+          <textarea name="comment" rows="3" placeholder="Например: подача в 22:30"></textarea>
+        </label>
+        <button type="submit">Опубликовать заявку</button>
+      </form>
+
+      <h3>Мои заявки</h3>
+      <ul id="customer-orders" class="orders"></ul>
+    </section>
+
+    <section id="carrier-dashboard" class="card hidden">
+      <div class="dashboard-head">
+        <h2>Личный кабинет перевозчика</h2>
+        <button id="carrier-logout" class="secondary">Выйти</button>
+      </div>
+      <p id="carrier-welcome"></p>
+      <h3>Лента заказов</h3>
+      <ul id="carrier-feed" class="orders"></ul>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
